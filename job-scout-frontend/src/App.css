@@ -1,0 +1,321 @@
+/* Global Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #172b4d;
+    margin: 0;
+}
+
+.app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+main {
+    padding-top: 1rem;
+}
+
+/* Navigation Styles */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dfe1e6;
+}
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #091e42;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  font-weight: 600;
+  color: #5e6c84;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover {
+  color: #0052cc;
+}
+
+/* Headings and Links */
+.company-heading {
+  font-size: 1.75rem;
+  color: #42526e;
+  border-bottom: 2px solid #dfe1e6;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #0052cc;
+  text-decoration: none;
+}
+
+/* Company List on Home Page */
+.company-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.company-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(9, 30, 66, 0.15);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0052cc;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.company-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(9, 30, 66, 0.2);
+}
+
+.company-logo {
+    max-height: 60px;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+/* Job List Styles */
+.job-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.job-card {
+    position: relative; /* For the match score badge */
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(9, 30, 66, 0.15);
+    transition: transform 0.2s ease-in-out;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+.job-card h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #0052cc;
+}
+
+.job-card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #5e6c84;
+}
+
+.job-card .location {
+    margin: 0 0 1.5rem 0;
+    color: #6b778c;
+}
+
+/* Button Styles */
+.card-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.apply-btn {
+    display: inline-block;
+    background-color: #0052cc;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.apply-btn:hover {
+    background-color: #0065ff;
+}
+
+.details-btn {
+  background-color: #f4f5f7;
+  color: #42526e;
+  border: 1px solid #dfe1e6;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.details-btn:hover {
+  background-color: #ebecf0;
+}
+
+/* Match Score & Sorting Styles */
+.sort-container {
+  margin-bottom: 1.5rem;
+  text-align: right;
+}
+
+.sort-btn {
+  background-color: #e6fcf5;
+  color: #006644;
+  border: 1px solid #006644;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sort-btn:hover {
+  background-color: #ccefe5;
+}
+
+.match-score {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #deebff;
+  color: #0747a6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Resume Tailoring Button & Loader */
+.tailor-section {
+  border-top: 1px solid #dfe1e6;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+}
+
+.tailor-btn {
+  width: 100%;
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tailor-btn:hover {
+  background-color: #d9f7be;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #0052cc;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  margin-top: 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Profile Page & Form Styles */
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.upload-form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(9, 30, 66, 0.15);
+}
+.upload-form input[type="file"] {
+  display: block;
+  margin: 1.5rem 0;
+}
+.status-message {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.status-message.success {
+  background-color: #e6fcf5;
+  color: #006644;
+}
+.status-message.error {
+  background-color: #ffebe6;
+  color: #bf2600;
+}
+
+/* Add to bottom of src/App.css */
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: var(--primary-brand-color);
+  box-shadow: 0 0 0 2px rgba(0, 82, 204, 0.2);
+}
+
+.results-count {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Make sure the sort container doesn't shrink */
+.sort-container {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}

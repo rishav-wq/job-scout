@@ -1,0 +1,47 @@
+{
+  "name": "job-scout-backend",
+  "version": "1.0.0",
+  "description": "Backend service for Job Scout - A job listing aggregator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "jobs",
+    "scraping",
+    "api",
+    "mongodb",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.1.6",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.6.0",
+    "bcryptjs": "^3.0.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cohere-ai": "^7.19.0",
+    "cors": "^2.8.5",
+    "cosine-similarity": "^1.0.1",
+    "docx": "^9.5.1",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mammoth": "^1.11.0",
+    "mongoose": "^7.8.7",
+    "multer": "^2.0.2",
+    "node-cron": "^3.0.3",
+    "openai": "^6.0.1",
+    "pdf-parse": "^2.1.1",
+    "pdf2json": "^3.2.2",
+    "puppeteer": "^24.23.0",
+    "puppeteer-core": "^24.23.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4",
+    "nodemon": "^3.1.10"
+  }
+}
