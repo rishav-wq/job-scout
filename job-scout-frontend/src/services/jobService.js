@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // CORRECTED: Pointing to port 8000 and the correct v1 path
-const API_URL = 'https://job-scout-backend-4zvq.onrender.com/api/v1/jobs';
+const API_URL = 'https://job-scout-1.onrender.com/api/v1/jobs';
 
 export const getAllJobs = async () => {
     try {
