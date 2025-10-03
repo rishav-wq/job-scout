@@ -11,7 +11,7 @@ const resumeRoutes = require('./routes/resumeRoutes');
 const { startScheduler } = require('./scheduler'); // <-- 1. IMPORT
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = https://job-scout-chi.vercel.app;
 
 // Database Connection
 const connectDB = async () => {
