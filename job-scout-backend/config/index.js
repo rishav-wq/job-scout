@@ -40,7 +40,7 @@ const TARGET_COMPANIES = [
     {
         name: 'Amazon',
         url: 'https://www.amazon.jobs/content/en/career-programs/university?country%5B%5D=IN#search'
-    }
+    },
 
     {
         name: 'Paytm',
@@ -54,11 +54,11 @@ const TARGET_COMPANIES = [
     {
     name: 'Cashfree Payments',
     url: 'https://www.cashfree.com/careers'
-    }
+    },
     {
     name: 'Intuit',
     url: 'https://jobs.intuit.com/search-jobs'
-    }
+    },
      {
         name: 'PhonePe',
         url: 'https://www.phonepe.com/careers/job-openings/',
