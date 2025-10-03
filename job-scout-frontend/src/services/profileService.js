@@ -1,7 +1,7 @@
 // In src/services/profileService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/v1/profile';
+const API_URL = 'https://job-scout-backend-4zvq.onrender.com/api/v1/profile';
 
 /**
  * Uploads a resume file to the backend.
