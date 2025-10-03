@@ -83,7 +83,7 @@ async function runScrapers() {
     }
 
     console.log('All scrapers have finished their runs.');
-    // await calculateMatchScores();
+    await calculateMatchScores();
 }
 
 module.exports = { runScrapers };
