@@ -8,7 +8,7 @@ function startScheduler() {
     // Schedule the main task to run every day at 2:35 AM.
     // Cron format: Minute Hour DayOfMonth Month DayOfWeek
     // '35 2 * * *' means "at minute 35 of hour 2 every day".
-    cron.schedule('35 2 * * *', async () => {
+    cron.schedule('40 2 * * *', async () => {
         console.log('--- 🕒 Starting Scheduled Nightly Job ---');
         try {
             // 1. Run all scrapers to get fresh job data
