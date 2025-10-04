@@ -11,7 +11,7 @@ const resumeRoutes = require('./routes/resumeRoutes');
 const { startScheduler } = require('./scheduler'); // <-- 1. IMPORT
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;;
 
 // Database Connection
 const connectDB = async () => {
@@ -38,7 +38,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes

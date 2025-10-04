@@ -17,7 +17,7 @@ const TARGET_COMPANIES = [
         name: 'Uber',
         url: 'https://www.uber.com/in/en/careers/list/?locations=India',
     },
- {
+    {
         name: 'Apple',
         url: 'https://jobs.apple.com/en-in/search?location=india-IND',
     },
