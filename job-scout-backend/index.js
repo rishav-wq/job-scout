@@ -31,7 +31,8 @@ app.use(cors({
     origin: [
         'http://localhost:3000',
         'http://localhost:5173',
-        'https://job-scout-i1y9.vercel.app'
+        'https://job-scout-i1y9.vercel.app',
+        'https://job-scout-chi.vercel.app',
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
