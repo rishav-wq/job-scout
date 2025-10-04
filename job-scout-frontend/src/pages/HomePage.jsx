@@ -1,11 +1,11 @@
 // In src/pages/HomePage.jsx
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllJobs } from '../services/jobService';
+// 1. Import BOTH service functions
+import { getAllJobs, getJobStats } from '../services/jobService';
 import '../App.css';
 
-// --- NEW: Import all the logos ---
+// --- Import all the logos ---
 import atlassianLogo from '../assets/atlassian.png';
 import microsoftLogo from '../assets/microsoft.png';
 import googleLogo from '../assets/google.png';
@@ -22,9 +22,12 @@ import cashfreeLogo from '../assets/cashfree.jpg';
 import intuitLogo from '../assets/intuit.jpg';
 import phonepeLogo from '../assets/phonepe.jpg';
 import serviceNowLogo from '../assets/servicenow.png';
-// ------------------------------------
+import zoominfoLogo from '../assets/zoom.jpg';
+import hitachiLogo from '../assets/hitachi.png';
+import boeingLogo from '../assets/boeing.jpg';
+import qualcommLogo from '../assets/qualcomm.jpg';
 
-// --- NEW: Create a map to link names to logos ---
+// --- Create logo map ---
 const logoMap = {
     'Atlassian': atlassianLogo,
     'Microsoft': microsoftLogo,
@@ -41,31 +44,55 @@ const logoMap = {
     'Cashfree Payments': cashfreeLogo,
     'Intuit': intuitLogo,
     'PhonePe': phonepeLogo,
-    'ServiceNow': serviceNowLogo
+    'ServiceNow': serviceNowLogo,
+    'Zoominfo': zoominfoLogo,
+    'Hitachi': hitachiLogo,
+    'Boeing': boeingLogo,
+    'Qualcomm': qualcommLogo
 };
-// ------------------------------------------------
 
 function HomePage() {
     const [companies, setCompanies] = useState([]);
+    const [stats, setStats] = useState({ newJobsToday: 0 }); 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const getCompanies = async () => {
-            const data = await getAllJobs();
-            const companyNames = [...new Set(data.jobs.map(job => job.company))];
-            setCompanies(companyNames);
-            setLoading(false);
+        const loadHomePageData = async () => {
+            setLoading(true);
+            try {
+                // 2. Fetch BOTH companies and stats
+                const [jobsData, statsData] = await Promise.all([
+                    getAllJobs(),
+                    getJobStats()
+                ]);
+                
+                const companyNames = [...new Set(jobsData.jobs.map(job => job.company))];
+                setCompanies(companyNames);
+                setStats(statsData); // 3. Set the stats state
+            } catch (error) {
+                console.error("Failed to load home page data:", error);
+            } finally {
+                setLoading(false);
+            }
         };
-        getCompanies();
+        
+        loadHomePageData();
     }, []);
 
     return (
         <div className="company-list-container">
             <h2 className="company-heading">Select a Company</h2>
+            
+            {/* Notification banner - now will actually show when there are new jobs */}
+            {!loading && stats.newJobsToday > 0 && (
+                <div className="notification-banner">
+                    🎉 {stats.newJobsToday} new jobs were added today! Check them out.
+                </div>
+            )}
+            
             {loading ? <p>Loading companies...</p> : (
                 <div className="company-list">
                     {companies.map(company => (
-                        // We use the company name to look up the correct logo in our map
                         <Link to={`/jobs/${company}`} key={company} className="company-card">
                             <img src={logoMap[company]} alt={`${company} logo`} className="company-logo" />
                             <span>{company}</span>

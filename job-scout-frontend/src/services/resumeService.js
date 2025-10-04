@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/v1/resume';
+const API_URL = 'https://job-scout-1.onrender.com/api/v1/resume';
 
 /**
  * Starts the resume tailoring process for a given job.

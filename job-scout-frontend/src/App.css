@@ -319,3 +319,16 @@ main {
   flex-shrink: 0;
   margin-bottom: 0;
 }
+
+.notification-banner {
+  background-color: #e6fcf5;
+  color: #006644;
+  border: 1px solid #ccefe5;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.5s ease-out;
+}
