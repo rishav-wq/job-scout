@@ -8,10 +8,10 @@ const path = require('path');
 const jobRoutes = require('./routes/jobRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
-const { startScheduler } = require('./scheduler'); // <-- 1. IMPORT
+const { startScheduler } = require('./scheduler');
 
 const app = express();
-const PORT = process.env.PORT || 8000;;
+const PORT = process.env.PORT || 8000;
 
 // Database Connection
 const connectDB = async () => {
@@ -26,7 +26,6 @@ const connectDB = async () => {
 connectDB();
 
 // Middleware
-// Middleware
 app.use(cors({
     origin: [
         'http://localhost:3000',
@@ -38,6 +37,10 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API Routes
@@ -45,13 +48,8 @@ app.use('/api/v1/jobs', jobRoutes);
 app.use('/api/v1/profile', profileRoutes);
 app.use('/api/v1/resume', resumeRoutes);
 
-
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  
-  // --- START THE SCHEDULER ---
-  startScheduler(); // <-- 2. CALL THE FUNCTION
-  // -------------------------
+    console.log(`Server is running on http://localhost:${PORT}`);
+    startScheduler();
 });
-
