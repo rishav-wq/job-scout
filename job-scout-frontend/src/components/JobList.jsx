@@ -142,7 +142,7 @@ function JobList({ jobs }) {
             <div>
               <p>✅ Your tailored resume is ready!</p>
               {/* Ensure this URL correctly points to your backend for download */}
-              <a href={`http://localhost:8000${tailoringTask.downloadUrl}`} download className="apply-btn">
+              <a href={`https://job-scout-1.onrender.com${tailoringTask.downloadUrl}`} download className="apply-btn">
                 Download Now
               </a>
               <button onClick={() => setTailoringTask(null)} className="details-btn" style={{ marginLeft: '1rem' }}>
