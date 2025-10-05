@@ -82,7 +82,15 @@ const TARGET_COMPANIES = [
      { 
         name: 'Qualcomm', 
         url: 'https://careers.qualcomm.com/careers?query=Machine%20Learning&location=India'
-     }
+     },
+     { 
+    name: 'Practo', 
+    url: 'https://practo.app.param.ai/jobs/'
+},
+ { 
+    name: 'Groww', 
+    url: 'https://job-boards.eu.greenhouse.io/groww'
+ }
 ];
 
 module.exports = { TARGET_COMPANIES };
