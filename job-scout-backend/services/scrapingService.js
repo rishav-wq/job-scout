@@ -25,6 +25,8 @@ const scrapeZoominfo = require('../scrapers/zoominfoScraper');
 const hitachiScraper = require('../scrapers/hitachiScraper');
 const boeingScraper = require('../scrapers/boeingScraper');
 const qualcommScraper = require('../scrapers/qualcommScraper');
+const practoScraper = require('../scrapers/practoScraper');
+const growwScraper = require('../scrapers/growwScraper');
 // Create a map to easily access the correct scraper function by company name
 const scrapers = {
     'Atlassian': scrapeAtlassian,
@@ -46,7 +48,9 @@ const scrapers = {
     'Zoominfo': scrapeZoominfo,
     'Hitachi': hitachiScraper,
     'Boeing': boeingScraper,
-    'Qualcomm': qualcommScraper
+    'Qualcomm': qualcommScraper,
+     'Practo': practoScraper,
+    'Groww': growwScraper,
 };
 
 async function runScrapers() {
