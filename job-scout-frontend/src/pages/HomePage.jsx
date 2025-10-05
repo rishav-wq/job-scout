@@ -26,6 +26,8 @@ import zoominfoLogo from '../assets/zoom.jpg';
 import hitachiLogo from '../assets/hitachi.png';
 import boeingLogo from '../assets/boeing.jpg';
 import qualcommLogo from '../assets/qualcomm.jpg';
+import practoLogo from '../assets/practo.png';
+import growwLogo from '../assets/groww.png';
 
 // --- Create logo map ---
 const logoMap = {
@@ -48,7 +50,9 @@ const logoMap = {
     'Zoominfo': zoominfoLogo,
     'Hitachi': hitachiLogo,
     'Boeing': boeingLogo,
-    'Qualcomm': qualcommLogo
+    'Qualcomm': qualcommLogo,
+     'Practo': practoLogo,
+    'Groww': growwLogo
 };
 
 function HomePage() {
