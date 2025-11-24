@@ -1,24 +1,8 @@
 // In src/services/profileService.js
 import axios from 'axios';
 
-// Determine API URL based on environment
-const getApiBaseUrl = () => {
-    // Check if we have env variable
-    if (import.meta.env.VITE_API_URL) {
-        return import.meta.env.VITE_API_URL;
-    }
-    
-    // Check if we're in production (Vercel deployment)
-    if (window.location.hostname.includes('vercel.app') || 
-        window.location.hostname.includes('onrender.com')) {
-        return 'https://job-scout-1.onrender.com/api/v1';
-    }
-    
-    // Default to localhost for development
-    return 'http://localhost:8000/api/v1';
-};
-
-const API_BASE_URL = getApiBaseUrl();
+// Hardcoded production URL for immediate fix
+const API_BASE_URL = 'https://job-scout-1.onrender.com/api/v1';
 const API_URL = `${API_BASE_URL}/profile`;
 
 /**

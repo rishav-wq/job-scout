@@ -1,24 +1,8 @@
 // In src/services/jobService.js
 import axios from 'axios';
 
-// Determine API URL based on environment
-const getApiUrl = () => {
-    // Check if we have env variable
-    if (import.meta.env.VITE_API_URL) {
-        return import.meta.env.VITE_API_URL;
-    }
-    
-    // Check if we're in production (Vercel deployment)
-    if (window.location.hostname.includes('vercel.app') || 
-        window.location.hostname.includes('onrender.com')) {
-        return 'https://job-scout-1.onrender.com/api/v1/jobs';
-    }
-    
-    // Default to localhost for development
-    return 'http://localhost:8000/api/v1/jobs';
-};
-
-const API_URL = getApiUrl();
+// Hardcoded production URL for immediate fix
+const API_URL = 'https://job-scout-1.onrender.com/api/v1/jobs';
 
 export const getAllJobs = async () => {
     try {
