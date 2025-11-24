@@ -6,11 +6,10 @@ import FilterBar from '../components/FilterBar';
 import '../App.css';
 
 function CompanyJobsPage() {
-    const [allJobs, setAllJobs] = useState([]); // Holds the original, unfiltered list
+    const [allJobs, setAllJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const { companyName } = useParams();
 
-    // Create state to hold the current filter values
     const [filters, setFilters] = useState({
         title: '',
         location: '',
@@ -21,13 +20,12 @@ function CompanyJobsPage() {
             setLoading(true);
             const data = await getAllJobs();
             const filteredJobs = data.jobs.filter(job => job.company === companyName);
-            setAllJobs(filteredJobs); // Store the full list for this company
+            setAllJobs(filteredJobs);
             setLoading(false);
         };
         getJobs();
     }, [companyName]);
 
-    // Create a memoized list of jobs to display
     const filteredJobs = useMemo(() => {
         return allJobs.filter(job => {
             const titleMatch = job.title.toLowerCase().includes(filters.title.toLowerCase());
@@ -36,29 +34,37 @@ function CompanyJobsPage() {
         });
     }, [allJobs, filters]);
 
-
     const sortJobsByMatch = () => {
         const sortedJobs = [...allJobs].sort((a, b) => b.matchScore - a.matchScore);
-        setAllJobs(sortedJobs); // Sort the original list
+        setAllJobs(sortedJobs);
     };
 
     return (
         <div>
             <Link to="/" className="back-link">← Back to Companies</Link>
-            <h2 className="company-heading">{companyName} Jobs</h2>
+            <h1>{companyName} Careers</h1>
+            <p style={{ color: '#757575', marginBottom: '2rem' }}>
+                Explore open positions at {companyName}
+            </p>
             
             <div className="controls-container">
                 <FilterBar filters={filters} setFilters={setFilters} />
                 <div className="sort-container">
                     <button onClick={sortJobsByMatch} className="sort-btn">
-                        Sort by Best Match ✨
+                        ✨ Best Match
                     </button>
                 </div>
             </div>
 
-            {loading ? <p>Loading jobs...</p> : (
+            {loading ? (
+                <p style={{ textAlign: 'center', padding: '2rem', color: '#757575' }}>
+                    Loading jobs...
+                </p>
+            ) : (
                 <>
-                    <p className="results-count">{filteredJobs.length} jobs found</p>
+                    <p className="results-count">
+                        <strong>{filteredJobs.length}</strong> jobs found
+                    </p>
                     <JobList jobs={filteredJobs} />
                 </>
             )}

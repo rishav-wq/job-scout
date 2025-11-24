@@ -1,15 +1,16 @@
+// In models/Job.js
 const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true,
+        trim: true, // Removes whitespace from the beginning and end
     },
     url: {
         type: String,
         required: true,
-        // REMOVE unique: true completely
+        unique: true, // We don't want to save the same job URL twice
     },
     company: {
         type: String,
@@ -28,10 +29,12 @@ const jobSchema = new mongoose.Schema({
         default: 'No description available.',
     },
     matchScore: {
-        type: Number,
-        default: -1,
+    type: Number,
+    default: -1,
     },
 });
 
+// Create the model from the schema
 const Job = mongoose.model('Job', jobSchema);
+
 module.exports = Job;

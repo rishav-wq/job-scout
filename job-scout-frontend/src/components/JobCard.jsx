@@ -1,11 +1,10 @@
+// In src/components/JobCard.jsx
 import React from 'react';
 
-// The card now accepts an `onTailorResume` function
-function JobCard({ job, onViewDetails, onTailorResume }) {
-  const isTopMatch = job.matchScore >= 70;
-
+function JobCard({ job, onViewDetails }) {
   return (
     <div className="job-card">
+      {/* NEW: Conditionally render the Match Score badge */}
       {job.matchScore > 0 && (
         <div className="match-score">
           ✨ {Math.round(job.matchScore)}% Match
@@ -23,18 +22,8 @@ function JobCard({ job, onViewDetails, onTailorResume }) {
           View Details
         </button>
       </div>
-
-      {/* NEW: Conditionally render the AI Tailor button for top matches */}
-      {isTopMatch && (
-        <div className="tailor-section">
-          <button onClick={() => onTailorResume(job)} className="tailor-btn">
-            🤖 AI Tailor Resume for this Job
-          </button>
-        </div>
-      )}
     </div>
   );
 }
 
 export default JobCard;
-

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: job-scout-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: |
+      apt-get update
+      apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra texlive-xetex
+      npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: COHERE_API_KEY
+        sync: false
+    # Add your other environment variables here
+    

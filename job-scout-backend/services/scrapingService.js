@@ -11,20 +11,7 @@ const scrapeGoogle = require('../scrapers/googleScraper');
 const scrapeMeta = require('../scrapers/metaScraper');
 const scrapeUber = require('../scrapers/uberScraper');
 const scrapeApple = require('../scrapers/appleScraper');
-const scrapeAdobe = require('../scrapers/adobeScraper');
-const scrapePaytm = require('../scrapers/paytmScraper');
-const amazonScraper = require('../scrapers/amazonScraper');
-const scrapeMakeMyTrip = require('../scrapers/makemytripScraper');
-const scrapeStandardChartered = require('../scrapers/standardcharteredScraper');
-const scrapeFlipkart = require('../scrapers/flipkartScraper');
-const scrapeCashfree = require('../scrapers/cashfreeScraper');
-const scrapeIntuit = require('../scrapers/intuitScraper');
-const PhonePeScraper = require('../scrapers/phonepeScraper');
-const serviceNowScraper = require('../scrapers/servicenowScraper');
-const scrapeZoominfo = require('../scrapers/zoominfoScraper');
-const hitachiScraper = require('../scrapers/hitachiScraper');
-const boeingScraper = require('../scrapers/boeingScraper');
-const qualcommScraper = require('../scrapers/qualcommScraper');
+
 // Create a map to easily access the correct scraper function by company name
 const scrapers = {
     'Atlassian': scrapeAtlassian,
@@ -33,20 +20,6 @@ const scrapers = {
     'Meta': scrapeMeta,
     'Uber': scrapeUber,
     'Apple': scrapeApple,
-    'Adobe': scrapeAdobe,
-    'Paytm': scrapePaytm,
-    'Amazon': amazonScraper,
-    'MakeMyTrip': scrapeMakeMyTrip,
-    'Standard Chartered': scrapeStandardChartered,
-    'Flipkart': scrapeFlipkart,
-    'Cashfree Payments': scrapeCashfree,
-    'Intuit': scrapeIntuit, 
-    'PhonePe': PhonePeScraper,
-    'ServiceNow': serviceNowScraper,
-    'Zoominfo': scrapeZoominfo,
-    'Hitachi': hitachiScraper,
-    'Boeing': boeingScraper,
-    'Qualcomm': qualcommScraper
 };
 
 async function runScrapers() {
@@ -90,7 +63,7 @@ async function runScrapers() {
     }
 
     console.log('All scrapers have finished their runs.');
-    await calculateMatchScores();
+    // await calculateMatchScores();
 }
 
 module.exports = { runScrapers };

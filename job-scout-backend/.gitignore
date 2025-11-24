@@ -33,3 +33,16 @@ coverage
 # misc
 .DS_Store
 *.pem
+
+# Generated files
+temp/*
+!temp/.gitkeep
+generated/*
+!generated/.gitkeep
+public/resumes/*
+!public/resumes/.gitkeep
+
+# Screenshots and debug images
+*.png
+*.jpg
+*.jpeg

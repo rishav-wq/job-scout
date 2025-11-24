@@ -1,100 +1,103 @@
 // In src/pages/HomePage.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// 1. Import BOTH service functions
-import { getAllJobs, getJobStats } from '../services/jobService';
+import { getAllJobs } from '../services/jobService';
 import '../App.css';
 
-// --- Import all the logos ---
-import atlassianLogo from '../assets/atlassian.png';
-import microsoftLogo from '../assets/microsoft.png';
-import googleLogo from '../assets/google.png';
-import metaLogo from '../assets/meta.png';
-import uberLogo from '../assets/uber.png';
-import appleLogo from '../assets/apple.png';
-import paytmLogo from '../assets/paytm.png';
+// Import all company logos
 import adobeLogo from '../assets/adobe.png';
 import amazonLogo from '../assets/amazon.png';
-import mmtLogo from '../assets/mmt.jpg';
-import scc from '../assets/scc.png';
-import flipkartLogo from '../assets/flipkart.png';
-import cashfreeLogo from '../assets/cashfree.jpg';
-import intuitLogo from '../assets/intuit.jpg';
-import phonepeLogo from '../assets/phonepe.jpg';
-import serviceNowLogo from '../assets/servicenow.png';
-import zoominfoLogo from '../assets/zoom.jpg';
-import hitachiLogo from '../assets/hitachi.png';
+import appleLogo from '../assets/apple.png';
+import atlassianLogo from '../assets/atlassian.png';
 import boeingLogo from '../assets/boeing.jpg';
+import cashfreeLogo from '../assets/cashfree.jpg';
+import flipkartLogo from '../assets/flipkart.png';
+import googleLogo from '../assets/google.png';
+import growwLogo from '../assets/groww.png';
+import hitachiLogo from '../assets/hitachi.png';
+import intuitLogo from '../assets/intuit.jpg';
+import mmtLogo from '../assets/mmt.jpg';
+import metaLogo from '../assets/meta.png';
+import microsoftLogo from '../assets/microsoft.png';
+import paytmLogo from '../assets/paytm.png';
+import phonepeLogo from '../assets/phonepe.jpg';
+import practoLogo from '../assets/practo.png';
 import qualcommLogo from '../assets/qualcomm.jpg';
+import sccLogo from '../assets/scc.png';
+import servicenowLogo from '../assets/servicenow.png';
+import uberLogo from '../assets/uber.png';
+import zoomLogo from '../assets/zoom.jpg';
 
-// --- Create logo map ---
+// Map company names to their logos
 const logoMap = {
-    'Atlassian': atlassianLogo,
-    'Microsoft': microsoftLogo,
-    'Google': googleLogo,
-    'Meta': metaLogo,
-    'Uber': uberLogo,
-    'Apple': appleLogo,
-    'Paytm': paytmLogo,
     'Adobe': adobeLogo,
     'Amazon': amazonLogo,
-    'MakeMyTrip': mmtLogo,
-    'Standard Chartered': scc,
-    'Flipkart': flipkartLogo,
-    'Cashfree Payments': cashfreeLogo,
-    'Intuit': intuitLogo,
-    'PhonePe': phonepeLogo,
-    'ServiceNow': serviceNowLogo,
-    'Zoominfo': zoominfoLogo,
-    'Hitachi': hitachiLogo,
+    'Apple': appleLogo,
+    'Atlassian': atlassianLogo,
     'Boeing': boeingLogo,
-    'Qualcomm': qualcommLogo
+    'Cashfree Payments': cashfreeLogo,
+    'Flipkart': flipkartLogo,
+    'Google': googleLogo,
+    'Groww': growwLogo,
+    'Hitachi': hitachiLogo,
+    'Intuit': intuitLogo,
+    'MakeMyTrip': mmtLogo,
+    'Meta': metaLogo,
+    'Microsoft': microsoftLogo,
+    'Paytm': paytmLogo,
+    'PhonePe': phonepeLogo,
+    'Practo': practoLogo,
+    'Qualcomm': qualcommLogo,
+    'Standard Chartered': sccLogo,
+    'ServiceNow': servicenowLogo,
+    'Uber': uberLogo,
+    'Zoominfo': zoomLogo,
 };
 
 function HomePage() {
     const [companies, setCompanies] = useState([]);
-    const [stats, setStats] = useState({ newJobsToday: 0 }); 
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const loadHomePageData = async () => {
-            setLoading(true);
-            try {
-                // 2. Fetch BOTH companies and stats
-                const [jobsData, statsData] = await Promise.all([
-                    getAllJobs(),
-                    getJobStats()
-                ]);
-                
-                const companyNames = [...new Set(jobsData.jobs.map(job => job.company))];
-                setCompanies(companyNames);
-                setStats(statsData); // 3. Set the stats state
-            } catch (error) {
-                console.error("Failed to load home page data:", error);
-            } finally {
-                setLoading(false);
-            }
+        const getCompanies = async () => {
+            const data = await getAllJobs();
+            const companyNames = [...new Set(data.jobs.map(job => job.company))];
+            setCompanies(companyNames);
+            setLoading(false);
         };
-        
-        loadHomePageData();
+        getCompanies();
     }, []);
 
     return (
         <div className="company-list-container">
-            <h2 className="company-heading">Select a Company</h2>
+            <h1>Discover Your Next Opportunity</h1>
+            <p style={{ color: '#757575', marginBottom: '2rem', fontSize: '1.05rem' }}>
+                Browse jobs from top tech companies tailored to your skills and experience
+            </p>
             
-            {/* Notification banner - now will actually show when there are new jobs */}
-            {!loading && stats.newJobsToday > 0 && (
-                <div className="notification-banner">
-                    🎉 {stats.newJobsToday} new jobs were added today! Check them out.
-                </div>
-            )}
-            
-            {loading ? <p>Loading companies...</p> : (
+            <h2 className="company-heading">Featured Companies</h2>
+            {loading ? (
+                <p style={{ textAlign: 'center', padding: '2rem', color: '#757575' }}>
+                    Loading companies...
+                </p>
+            ) : (
                 <div className="company-list">
                     {companies.map(company => (
                         <Link to={`/jobs/${company}`} key={company} className="company-card">
-                            <img src={logoMap[company]} alt={`${company} logo`} className="company-logo" />
+                            {logoMap[company] ? (
+                                <img src={logoMap[company]} alt={`${company} logo`} className="company-logo" />
+                            ) : (
+                                <div style={{ 
+                                    height: '60px', 
+                                    display: 'flex', 
+                                    alignItems: 'center',
+                                    fontSize: '1.5rem',
+                                    color: '#2557a7'
+                                }}>
+                                    🏢
+                                </div>
+                            )}
                             <span>{company}</span>
                         </Link>
                     ))}

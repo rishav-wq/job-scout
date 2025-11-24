@@ -1,11 +1,11 @@
 // In src/pages/ProfilePage.jsx
 import React, { useState } from 'react';
 import { uploadResume } from '../services/profileService';
-import '../App.css'; // Reusing styles
+import '../App.css';
 
 function ProfilePage() {
     const [selectedFile, setSelectedFile] = useState(null);
-    const [status, setStatus] = useState(''); // 'uploading', 'success', 'error'
+    const [status, setStatus] = useState('');
     const [message, setMessage] = useState('');
 
     const handleFileChange = (event) => {
@@ -23,7 +23,7 @@ function ProfilePage() {
         }
 
         setStatus('uploading');
-        setMessage('Uploading and processing...');
+        setMessage('Uploading and processing your resume...');
 
         try {
             const response = await uploadResume(selectedFile);
@@ -37,17 +37,41 @@ function ProfilePage() {
 
     return (
         <div className="profile-container">
-            <h2 className="company-heading">Your Profile</h2>
+            <h1>My Profile</h1>
+            <p style={{ color: '#757575', marginBottom: '2rem' }}>
+                Upload your resume to get personalized job matches
+            </p>
+            
             <form onSubmit={handleSubmit} className="upload-form">
-                <h3>Upload Your Base Resume</h3>
-                <p>Upload a PDF or DOCX file. This will be used to calculate match scores for jobs.</p>
-                <input type="file" accept=".pdf,.docx" onChange={handleFileChange} />
-                <button type="submit" className="apply-btn" disabled={status === 'uploading'}>
+                <h3>📄 Upload Your Resume</h3>
+                <p>
+                    Upload a PDF or DOCX file. We'll analyze your skills and experience to 
+                    calculate match scores for all available positions.
+                </p>
+                
+                <input 
+                    type="file" 
+                    accept=".pdf,.docx" 
+                    onChange={handleFileChange}
+                    id="resume-upload"
+                />
+                
+                {selectedFile && (
+                    <p style={{ color: '#2557a7', fontSize: '0.9rem', marginTop: '0.5rem' }}>
+                        Selected: {selectedFile.name}
+                    </p>
+                )}
+                
+                <button 
+                    type="submit" 
+                    className="apply-btn" 
+                    disabled={status === 'uploading'}
+                    style={{ marginTop: '1rem' }}
+                >
                     {status === 'uploading' ? 'Uploading...' : 'Upload Resume'}
                 </button>
             </form>
 
-            {/* Display status messages to the user */}
             {message && (
                 <div className={`status-message ${status}`}>
                     {message}
