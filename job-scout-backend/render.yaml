@@ -16,5 +16,6 @@ services:
         sync: false
       - key: COHERE_API_KEY
         sync: false
-    # Add your other environment variables here
+      - key: PORT
+        value: 8000
     

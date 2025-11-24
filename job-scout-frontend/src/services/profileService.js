@@ -1,7 +1,9 @@
 // In src/services/profileService.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/v1/profile';
+// Use environment variable or fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+const API_URL = `${API_BASE_URL}/profile`;
 
 /**
  * Uploads a resume file to the backend.

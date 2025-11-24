@@ -1,8 +1,8 @@
 // In src/services/jobService.js
 import axios from 'axios';
 
-// CORRECTED: Pointing to port 8000 and the correct v1 path
-const API_URL = 'http://localhost:8000/api/v1/jobs';
+// Use environment variable or fallback to localhost for development
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1/jobs';
 
 export const getAllJobs = async () => {
     try {
