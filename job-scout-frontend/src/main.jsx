@@ -7,6 +7,7 @@ import App from './App.jsx';
 import HomePage from './pages/HomePage.jsx';
 import CompanyJobsPage from './pages/CompanyJobsPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import MatchesPage from './pages/MatchesPage.jsx';
 
 // Define the application's routes
 const router = createBrowserRouter([
@@ -22,9 +23,13 @@ const router = createBrowserRouter([
         path: "/jobs/:companyName", // The ":companyName" is a URL parameter
         element: <CompanyJobsPage />,
       },
-      { // <-- 2. ADD THIS NEW ROUTE OBJECT
+      {
         path: "/profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "/my-matches",
+        element: <MatchesPage />,
       },
     ],
   },

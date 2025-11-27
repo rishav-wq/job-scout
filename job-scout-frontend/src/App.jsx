@@ -13,6 +13,7 @@ function App() {
           </Link>
           <div className="nav-links">
             <Link to="/">Find Jobs</Link>
+            <Link to="/my-matches">My Matches</Link>
             <Link to="/profile">My Profile</Link>
           </div>
         </div>
